@@ -1,4 +1,4 @@
-# DB-Assignment-
+# Trade Assignment-
 
 Write a Java program with all the JUNIT cases. TDD approach will be preferred. Time to complete the below assignment is 1 hr.
 
