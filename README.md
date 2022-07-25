@@ -23,7 +23,7 @@ Service 1 : retrieveAllTrades :-
             GET - http://localhost:8080/trade
                         
             
-Service 2 : Creation Of Trades with Reqired Validation :- 
+Service 2 : Creation Of Trades with Required Validation :- 
             POST - http://localhost:8080/trade
             
             Request Body :
