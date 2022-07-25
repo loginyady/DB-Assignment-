@@ -15,13 +15,13 @@ import com.db.trade.model.Trade;
 public class TradeService {
 
 	private static final Logger log = LoggerFactory.getLogger(TradeService.class);
-	
+
 	@Autowired
 	TradeRepository tradeRepository;
 
 	public boolean isValid(Trade trade) {
 		if (validateMaturityDate(trade)) {
-			//get the existing trade for validating the trade version.
+			// get the existing trade for validating the trade version.
 			Optional<Trade> exsitingTrade = tradeRepository.findById(trade.getTradeId());
 			if (exsitingTrade.isPresent()) {
 				return validateVersion(trade, exsitingTrade.get());
@@ -44,23 +44,24 @@ public class TradeService {
 		// override the existing record.
 		return trade.getVersion() >= oldTrade.getVersion() ? true : false;
 	}
-	
-	//Store should automatically update the expire flag if in a store the trade crosses the maturity date.
-	public void updateExpiryFlagOfTrade(){
-	   
-	        tradeRepository.findAll().stream().forEach(t -> {
-	                if (!validateMaturityDate(t)) {
-	                    t.setExpired("Y");
-	                    log.info("Trade which needs to updated {}", t);
-	                    tradeRepository.save(t);
-	                }
-	            });
-	        }
-	
-	public void  persist(Trade trade){
-	       // tradeDao.save(trade);
-	        trade.setCreatedDate(LocalDate.now());
-	        tradeRepository.save(trade);
-	    }
+
+	// Store should automatically update the expire flag if in a store the trade
+	// crosses the maturity date.
+	public void updateExpiryFlagOfTrade() {
+
+		tradeRepository.findAll().stream().forEach(t -> {
+			if (!validateMaturityDate(t)) {
+				t.setExpired("Y");
+				log.info("Trade which needs to updated {}", t);
+				tradeRepository.save(t);
+			}
+		});
+	}
+
+	public void persist(Trade trade) {
+		// tradeDao.save(trade);
+		trade.setCreatedDate(LocalDate.now());
+		tradeRepository.save(trade);
+	}
 
 }

@@ -36,7 +36,7 @@ public class TradeController {
 		} 
 			  else{ 
 			  throw new
-			  InvalidTradeException(trade.getTradeId()+"  Trade Id is not found"); }
+			  InvalidTradeException(trade.getTradeId()+"  Trade lower version is being received by the store, Not accepted the Trade "); }
 			 
         return ResponseEntity.status(HttpStatus.OK).build();
     }

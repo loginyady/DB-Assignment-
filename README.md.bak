@@ -33,6 +33,6 @@ Service 2 : Creation Of Trades with Reqired Validation :-
               "version":1,
               "counterPartyId":"CP-1",  
               "bookId": "B1", 
-              "maturityDate": "2022-06-20",
+               "maturityDate": "2022-06-20",
               "expired":"N"
               }
